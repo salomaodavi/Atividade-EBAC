@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agenda de Contatos</h1>
+    <form id="contactForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <table id="contactTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+</table>
+<script>
+     document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+         const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+
+            const table = document.getElementById('contactTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            const nameCell = newRow.insertCell(0);
+            const phoneCell = newRow.insertCell(1);
+
+            nameCell.textContent = nome;
+            phoneCell.textContent = telefone;
+
+            document.getElementById('contactForm').reset();
+        });
+    </script>
+</body>
+</html>
